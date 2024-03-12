@@ -4,5 +4,9 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #f1f5f6;
+}
+
+nav, head {
+  background-color: #0a438b;
 }

@@ -1,25 +1,34 @@
 
 const Flight = require('../models/flight')
 
-
 module.exports = {
     index,
     new: newFlight,
-    create
+    create,
+    show,
+
 }
 
 
+async function show (req, res) {
+    console.log('SEE ID HERE:', req.params.id)
+    const flight =  await Flight.findById(req.params.id)
+    console.log(flight)
+    flight.destinations.sort((a, b) => a.arrivals - b.arrivals)
+    console.log(flight)
+    res.render('flights/show', {
+        flight
+    })
+}
+
 async function index(req, res) {
-    
     const flights = await Flight.find({}).sort({departs: 1})
     res.render('flights/index', { flights })
 }
 
 function newFlight(req, res) {
     const newFlight = new Flight()
-    const ascOrder = newFlight.departs
-
-    console.log('NEW FLIGTH INFOR:', newFlight, 'ASCENDEING ORDER INFO:', ascOrder)
+  console.log('NEW FLIGTH INFOR:', newFlight)
     dt = newFlight.departs
     let departsDate = `${dt.getFullYear()}-${(dt.getMonth() + 1).toString().padStart(2, '0')}`;
     departsDate += `-${dt.getDate().toString().padStart(2, '0')}T${dt.toTimeString().slice(0, 5)}`;
