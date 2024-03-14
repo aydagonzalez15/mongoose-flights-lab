@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var tickersCtrl = require('../controller/tickets')
 
 
 /* GET home page. */

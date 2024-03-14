@@ -1,12 +1,68 @@
 body {
-  padding: 50px;
+  padding: 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #f1f5f6;
+
+
+
+* {
+  box-sizing: border-box;
+  font-family: Helvetica;
+  color: #424748;
 }
 
-nav, head {
-  background-color: #0a438b;
+body {
+  margin: 0;
+  height: 10vh;
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: 
+    "nav"
+    "main"
 }
+
+
+
+body > nav {
+  grid-area: nav;
+  background-color: #E8ECEB;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px 0 30px;
+}
+
+nav > img {
+  width: 34px;
+  object-fit: contain;
+  margin-right: auto;
+}
+
+nav > a {
+  margin: 20px;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+nav > a:hover:not(.active) {
+  color: white;
+  background-color: #424748;
+}
+
+table thead th {
+  padding: 5px;
+  border-bottom: 2px solid #424748;
+}
+
+table td {
+  padding: 10px;
+  text-align: center;
+}
+
+.add-ticket-form {
+  text-align: center;
+  padding: -100px;
+  color: blue;
+} 
