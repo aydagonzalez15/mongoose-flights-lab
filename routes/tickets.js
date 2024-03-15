@@ -12,8 +12,10 @@ router.get('/flights/:id/tickets/new', ticketsCtrl.new)
 // router.post('/tickets', ticketsCtrl.create )
 
 // POST	/posts/:id/comments	Create a comment for a post (1:M)	Needs Payload
-router. post('/flights/:id/tickets', ticketsCtrl.create)
+router.post('/flights/:id/tickets', ticketsCtrl.create)
+
+router.delete('/tickets/:id', ticketsCtrl.delete)
+
 
 module.exports = router;
-
 

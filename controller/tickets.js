@@ -6,8 +6,8 @@ module.exports = {
     new: newTicket,
     create,
     show,
+    delete: deleteTicket
 }
-
 
 
 async function newTicket(req, res) {
@@ -22,6 +22,7 @@ async function create(req, res) {
     const newTicket = await Ticket.create(req.body);
     newTicket.flight = req.params.id
     newTicket.save()
+
   res.redirect(`/flights/${req.params.id}`);   //`flights/${req.params.id}`
 }
 
@@ -29,6 +30,17 @@ async function create(req, res) {
 async function show(req, res) {
     const flight = await Flight.findById(req.params.id)
     const tickets = await Ticket.find({flight: flight._id})
-        console.log('LOOK:', tickets)
+        // console.log('LOOK:', tickets)
         res.render(`/flights/${req.params.id}`, {tickets, flight });
 }
+
+
+async function deleteTicket(req, res) {
+    const flight = await Flight.findById(req.params.id)
+    const tickets = await Ticket.find({flight: flight._id})
+    tickets.deleteOne(req.params.id)
+        console.log('LOOK:', tickets)
+        res.render('flights/', {tickets, flight });
+}
+
+

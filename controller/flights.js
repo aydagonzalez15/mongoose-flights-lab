@@ -17,7 +17,7 @@ async function show (req, res) {
     const tickets = await Ticket.find({flight: flight._id})
     ////console.log(flight)
     flight.destinations.sort((a, b) => a.arrivals - b.arrivals)
-    console.log(tickets)
+    // console.log(tickets)
     res.render('flights/show', {
         flight, tickets
     })
@@ -34,13 +34,13 @@ function newFlight(req, res) {
     dt = newFlight.departs
     let departsDate = `${dt.getFullYear()}-${(dt.getMonth() + 1).toString().padStart(2, '0')}`;
     departsDate += `-${dt.getDate().toString().padStart(2, '0')}T${dt.toTimeString().slice(0, 5)}`;
-    console.log(dt, departsDate)
+    // console.log(dt, departsDate)
     res.render('flights/new',  { departsDate, errorMsg: '' })
 }
 
 
 async function create(req, res) {
-    console.log("SEE THIS:",req.body)
+    // console.log("SEE THIS:",req.body)
     await Flight.create(req.body)
     res.redirect('/flights')
 }
